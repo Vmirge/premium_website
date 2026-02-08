@@ -66,12 +66,31 @@ export default function VortiaLP() {
   ]);
 
   // --- LOGIC ---
+  // --- HANDLERS ---
   const handleSaveProduct = () => {
     if (editingProduct) {
-      setHerbalProducts(herbalProducts.map(p => p.id === editingProduct.id ? { ...p, ...formState, price: Number(formState.price) } : p));
+      setHerbalProducts(herbalProducts.map(p => 
+        p.id === editingProduct.id 
+          ? { 
+              ...p, 
+              ...formState, 
+              price: Number(formState.price), 
+              stock: Number(formState.stock) // Convert string to number here
+            } 
+          : p
+      ));
     } else {
       const id = herbalProducts.length > 0 ? Math.max(...herbalProducts.map(p => p.id)) : 0;
-      setHerbalProducts([...herbalProducts, { ...formState, id: id + 1, price: Number(formState.price), img: "/placeholder.jpg" } as Product]);
+      setHerbalProducts([
+        ...herbalProducts, 
+        { 
+          ...formState, 
+          id: id + 1, 
+          price: Number(formState.price), 
+          stock: Number(formState.stock), // Convert string to number here
+          img: "/placeholder.jpg" 
+        } as Product
+      ]);
     }
     setShowAddModal(false);
   };
@@ -122,7 +141,22 @@ export default function VortiaLP() {
                             <thead className="bg-[#FAF9F6] text-[10px] font-black uppercase text-slate-400 border-b"><tr><th className="p-6">Image</th><th className="p-6">Name</th><th className="p-6">Category</th><th className="p-6">Price</th><th className="p-6 text-center">Actions</th></tr></thead>
                             <tbody className="text-sm">
                                 {herbalProducts.map((p) => (
-                                    <tr key={p.id} className="border-b hover:bg-slate-50 transition-colors"><td className="p-6"><img src={p.img} className="w-16 h-16 rounded-2xl object-cover" /></td><td className="p-6">{p.name}</td><td className="p-6 uppercase text-[10px] text-slate-400">{p.cat}</td><td className="p-6 font-black">₹{p.price}</td><td className="p-6 text-center"><button onClick={() => { setEditingProduct(p); setFormState({...p, price: p.price.toString()}); setShowAddModal(true); }} className="mr-4 underline font-black text-[#14532d]">Edit</button><button onClick={() => setHerbalProducts(herbalProducts.filter(x => x.id !== p.id))} className="text-red-500 underline font-black">Delete</button></td></tr>
+                                    <tr key={p.id} className="border-b hover:bg-slate-50 transition-colors"><td className="p-6"><img src={p.img} className="w-16 h-16 rounded-2xl object-cover" /></td><td className="p-6">{p.name}</td><td className="p-6 uppercase text-[10px] text-slate-400">{p.cat}</td><td className="p-6 font-black">₹{p.price}</td><td className="p-6 text-center">
+                                        <button 
+  onClick={() => { 
+    setEditingProduct(p); 
+    setFormState({
+      ...p, 
+      price: p.price.toString(), 
+      stock: (p.stock ?? 10).toString(), // FIX: Convert number to string here
+      badge: p.badge || "" 
+    }); 
+    setShowAddModal(true); 
+  }} 
+  className="mr-4 underline font-black text-[#14532d]"
+>
+  Edit
+</button><button onClick={() => setHerbalProducts(herbalProducts.filter(x => x.id !== p.id))} className="text-red-500 underline font-black">Delete</button></td></tr>
                                 ))}
                             </tbody>
                         </table>
