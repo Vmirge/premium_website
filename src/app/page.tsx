@@ -57,23 +57,23 @@ export default function VortiaLP() {
 
   // --- UPDATED PRODUCT LIST ---
   const [herbalProducts, setHerbalProducts] = useState<Product[]>([
-    { id: 1, name: "Almond Milk Soap", price: 299, cat: "Soaps", img: "/almond milk soap.JPEG", desc: "Creamy almond milk for soft, moisturized skin." },
-    { id: 2, name: "Charcoal Soap", price: 249, cat: "Soaps", img: "/charcol soap.JPEG", desc: "Deeply cleanses pores and removes toxins." },
-    { id: 3, name: "Goat Milk Soap", price: 299, cat: "Soaps", img: "/goat milk soap.JPEG", desc: "Gentle exfoliation with natural lactic acid." },
-    { id: 4, name: "Haldi Chandan Soap", price: 249, cat: "Soaps", img: "/haldi chandan soap.JPEG", desc: "Traditional glow-enhancing turmeric and sandalwood." },
-    { id: 5, name: "Honey Milk Soap", price: 279, cat: "Soaps", img: "/honey milk soap.JPEG", desc: "Nourishing honey base for soft, supple skin." },
-    { id: 6, name: "Neem Soap", price: 225, cat: "Soaps", img: "/neem soap.JPEG", desc: "Antibacterial protection for clear, healthy skin." },
-    { id: 7, name: "Papaya Soap", price: 249, cat: "Soaps", img: "/papaya soap.JPEG", desc: "Skin brightening enzymes for a fresh look." },
-    { id: 8, name: "Rice Potato Soap", price: 259, cat: "Soaps", img: "/rice patato soap.JPEG", desc: "Reduces dark spots and improves skin texture." },
-    { id: 9, name: "Rose Milk Soap", price: 299, cat: "Soaps", img: "/rose milk soap.JPEG", desc: "Fragrant rose and milk for deep hydration." },
-    { id: 10, name: "Saffron Milk Soap", price: 349, cat: "Soaps", img: "/saffron milk soap.JPEG", desc: "Premium saffron for a luxury bathing experience." },
-    { id: 11, name: "Charcoal Face Wash", price: 349, cat: "Face Wash", img: "/charcol facewash.JPEG", desc: "Pollution detox for deeply cleaned skin." },
-    { id: 12, name: "Coffee Face Wash", price: 325, cat: "Face Wash", img: "/coffee facewash.JPEG", desc: "Energizing caffeine boost for dull skin." },
-    { id: 13, name: "Haldi Chandan Face Wash", price: 349, cat: "Face Wash", img: "/haldi chandan facewash.JPEG", desc: "Daily brightness and acne protection." },
-    { id: 14, name: "Neem Face Wash", price: 325, cat: "Face Wash", img: "/neem face wash.JPEG", desc: "Purifying neem to prevent breakouts." },
-    { id: 15, name: "Herbal Hair Oil", price: 550, cat: "Hair Care", img: "/hair oil.JPEG", desc: "Promotes hair growth and reduces fall." },
-    { id: 16, name: "Hair Shampoo", price: 450, cat: "Hair Care", img: "/hair sampoo.JPEG", desc: "Botanical cleansing for strong, shiny hair." },
-    { id: 17, name: "Hair Conditioner", price: 425, cat: "Hair Care", img: "/hair conditioner.JPEG", desc: "Smooths frizz and adds natural shine." }
+    { id: 1, name: "Almond Milk Soap", price: 299, cat: "Soaps", img: "/almond milk soap.jpeg", desc: "Creamy almond milk for soft, moisturized skin." },
+    { id: 2, name: "Charcoal Soap", price: 249, cat: "Soaps", img: "/charcol soap.jpeg", desc: "Deeply cleanses pores and removes toxins." },
+    { id: 3, name: "Goat Milk Soap", price: 299, cat: "Soaps", img: "/goat milk soap.jpeg", desc: "Gentle exfoliation with natural lactic acid." },
+    { id: 4, name: "Haldi Chandan Soap", price: 249, cat: "Soaps", img: "/haldi chandan soap.jpeg", desc: "Traditional glow-enhancing turmeric and sandalwood." },
+    { id: 5, name: "Honey Milk Soap", price: 279, cat: "Soaps", img: "/honey milk soap.jpeg", desc: "Nourishing honey base for soft, supple skin." },
+    { id: 6, name: "Neem Soap", price: 225, cat: "Soaps", img: "/neem soap.jpeg", desc: "Antibacterial protection for clear, healthy skin." },
+    { id: 7, name: "Papaya Soap", price: 249, cat: "Soaps", img: "/papaya soap.jpeg", desc: "Skin brightening enzymes for a fresh look." },
+    { id: 8, name: "Rice Potato Soap", price: 259, cat: "Soaps", img: "/rice patato soap.jpeg", desc: "Reduces dark spots and improves skin texture." },
+    { id: 9, name: "Rose Milk Soap", price: 299, cat: "Soaps", img: "/rose milk soap.jpeg", desc: "Fragrant rose and milk for deep hydration." },
+    { id: 10, name: "Saffron Milk Soap", price: 349, cat: "Soaps", img: "/saffron milk soap.jpeg", desc: "Premium saffron for a luxury bathing experience." },
+    { id: 11, name: "Charcoal Face Wash", price: 349, cat: "Face Wash", img: "/charcol facewash.jpeg", desc: "Pollution detox for deeply cleaned skin." },
+    { id: 12, name: "Coffee Face Wash", price: 325, cat: "Face Wash", img: "/coffee facewash.jpeg", desc: "Energizing caffeine boost for dull skin." },
+    { id: 13, name: "Haldi Chandan Face Wash", price: 349, cat: "Face Wash", img: "/haldi chandan facewash.jpeg", desc: "Daily brightness and acne protection." },
+    { id: 14, name: "Neem Face Wash", price: 325, cat: "Face Wash", img: "/neem face wash.jpeg", desc: "Purifying neem to prevent breakouts." },
+    { id: 15, name: "Herbal Hair Oil", price: 550, cat: "Hair Care", img: "/hair oil.jpeg", desc: "Promotes hair growth and reduces fall." },
+    { id: 16, name: "Hair Shampoo", price: 450, cat: "Hair Care", img: "/hair sampoo.jpeg", desc: "Botanical cleansing for strong, shiny hair." },
+    { id: 17, name: "Hair Conditioner", price: 425, cat: "Hair Care", img: "/hair conditioner.jpeg", desc: "Smooths frizz and adds natural shine." }
   ]);
 
   // --- HANDLERS ---
