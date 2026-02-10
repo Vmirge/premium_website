@@ -244,12 +244,23 @@ export default function VortiaLP() {
             <section className="max-w-7xl mx-auto px-8 py-20 font-bold text-left grid lg:grid-cols-2 gap-10 items-center animate-in fade-in duration-1000">
               <div className="space-y-6">
                 <h1 className="text-8xl font-serif font-bold leading-[0.9] text-[#14532d]">Botanical <br /><span className="text-[#D4AF37] italic">Excellence</span></h1>
-                <p className="text-2xl font-semibold text-[#14532d] uppercase tracking-[0.15em] leading-relaxed">Premium Herbal Products Exporter & Global Service Provider</p>
-            
+                <p className="text-lg font-semibold text-[#14532d] uppercase tracking-[0.2em] leading-relaxed">
+  Premium Herbal Products Exporter & Global Service Provider
+</p>
                 <div className="flex gap-4 mt-8">
-                    <button onClick={() => setActiveTab('shop')} className="bg-[#14532d] text-white px-10 py-5 rounded-2xl shadow-xl font-bold">Our Products</button>
-                    <button onClick={() => setIsEnquiryOpen(true)} className="border-2 border-[#14532d] text-[#14532d] px-10 py-5 rounded-2xl shadow-lg font-bold">Enquiry Now</button>
-                </div>
+    <button 
+      onClick={() => setActiveTab('shop')} 
+      className="bg-[#14532d] text-white px-10 py-5 rounded-2xl shadow-xl font-bold uppercase text-[12px] tracking-widest hover:bg-[#D4AF37] transition-all"
+    >
+      Our Products
+    </button>
+    <button 
+      onClick={() => scrollToSection(contactRef)} 
+      className="border-2 border-[#14532d] text-[#14532d] px-10 py-5 rounded-2xl shadow-lg font-bold uppercase text-[12px] tracking-widest hover:bg-slate-50 transition-all"
+    >
+      Enquiry Now
+    </button>
+</div>
               </div>
               <div className="relative shadow-2xl rounded-[60px] overflow-hidden"><img src="https://images.unsplash.com/photo-1612817288484-6f916006741a" alt="Hero" className="w-full h-full object-cover" /></div>
             </section>
@@ -267,22 +278,71 @@ export default function VortiaLP() {
                 </div>
             </section>
 
-            <section ref={aboutRef} className="bg-white py-32 px-8 text-center font-sans font-bold font-black tracking-widest">
-              <h2 className="text-6xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-tighter font-black">Nature’s Standard.</h2>
-              <p className="text-slate-400 text-sm uppercase tracking-[0.3em] mb-20 max-w-3xl mx-auto font-black">
-               Vortia LP bridges global markets with Premium herbal products and reliable business services.
-              </p>
-              <div className="grid md:grid-cols-2 gap-16 text-left max-w-6xl mx-auto font-medium font-bold font-black">
-                  <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
-                    <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Mission</h3>
-                    <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To provide high-quality botanical products and exceed every customer expectation daily.</p>
-                  </div>
-                  <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
-                    <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Vision</h3>
-                    <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To become the most trusted leading brand globally through sustainable practices.</p>
-                  </div>
-              </div>
-            </section>
+            <section ref={aboutRef} className="bg-white py-32 px-8 text-center font-sans font-black tracking-widest uppercase">
+  <h2 className="text-6xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-tighter">About Us</h2>
+  
+  <p className="text-slate-400 text-sm uppercase tracking-[0.3em] mb-12 max-w-4xl mx-auto font-black leading-relaxed">
+    Vortia LP is a premium herbal products exporter specializing in natural and handmade herbal products. 
+    We focus on quality, purity, and global standards to deliver trusted herbal solutions to international markets.
+  </p>
+
+  {/* MISSION & VISION CARDS (RESTORED) */}
+  <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-20 text-left font-bold lowercase">
+      <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
+        <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Mission</h3>
+        <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To provide high-quality botanical products and exceed every customer expectation daily.</p>
+      </div>
+      <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
+        <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Vision</h3>
+        <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To become the most trusted leading brand globally through sustainable practices.</p>
+      </div>
+  </div>
+
+  <p className="text-[#14532d] text-sm uppercase tracking-[0.3em] mb-20 max-w-3xl mx-auto font-bold italic">
+    While nature provides the raw purity, our mission and vision elevate those standards into world-class botanical excellence.
+  </p>
+
+  {/* TWO BOXES SECTION FROM IMAGE */}
+  <div className="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto text-left font-bold lowercase">
+    
+    {/* LEFT BOX: WHY CHOOSE US */}
+    <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-slate-100 flex flex-col justify-between">
+      <div>
+        <h3 className="text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Why Choose Us</h3>
+        <ul className="space-y-4 text-slate-500 text-sm tracking-wider uppercase font-black">
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Herbal and Natural Ingredient-Based Products</li>
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Handcrafted herbal soaps made with carefully selected natural ingredients</li>
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Export-Quality Packaging & Consistency</li>
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Trusted Manufacturing Partners</li>
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Competitive Global Pricing</li>
+          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Reliable Bulk Supply for International Buyers</li>
+        </ul>
+      </div>
+    </div>
+
+    {/* RIGHT BOX: KEY PRODUCT CATEGORIES */}
+    <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-slate-100">
+      <h3 className="text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Key Product Categories</h3>
+      <ul className="space-y-4 text-slate-500 text-sm tracking-wider uppercase font-black">
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Handmade Herbal Soaps</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Natural Face Wash & Skincare Products</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Herbal Hair Care Products</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Botanical Wellness Products</li>
+      </ul>
+      
+      <div className="mt-12 pt-8 border-t border-slate-200">
+        <h4 className="text-[10px] font-black text-[#14532d] mb-4 tracking-widest uppercase">Pricing & Supply</h4>
+        <p className="text-[11px] leading-relaxed text-slate-400 font-bold mb-4">We offer competitive bulk export prices based on quantity, packaging, and destination country.</p>
+        <p className="text-[11px] leading-relaxed text-slate-400 font-bold">Custom labeling and private branding options are available for international buyers.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="mt-24 text-[#14532d] italic font-serif text-xl tracking-widest opacity-80">
+    <p>Nature-inspired products. Global quality standards.</p>
+    <p className="text-sm mt-2 font-black">Trusted herbal export partner.</p>
+  </div>
+</section>
 
             <section ref={contactRef} className="max-w-7xl mx-auto px-8 py-24 grid md:grid-cols-2 gap-20 items-start border-t border-slate-100 font-sans text-left font-black uppercase font-bold">
               <div className="space-y-10 font-bold">
