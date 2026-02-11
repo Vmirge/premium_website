@@ -224,46 +224,81 @@ export default function VortiaLP() {
           <button onClick={() => setActiveTab('home')} className="absolute left-10 text-[#D4AF37] hover:scale-125 transition-transform text-lg font-black">←</button>
           <span>Vortia LP • International Quality Standards</span>
       </div>
+      
+      
 
-      <nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 px-10 py-5 flex justify-between items-center shadow-sm font-sans font-bold">
-        <img src="/logo.JPEG" alt="Logo" className="h-24 w-auto object-contain cursor-pointer" onClick={() => setActiveTab('home')} />
-        <div className="hidden md:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500 font-bold">
-          <button onClick={() => setActiveTab('home')} className={activeTab === 'home' ? 'text-[#D4AF37]' : ''}>Home</button>
-          <button onClick={() => scrollToSection(aboutRef)}>About</button>
-          <button onClick={() => setActiveTab('shop')} className={activeTab === 'shop' ? 'text-[#D4AF37]' : ''}>Products</button>
-          <button onClick={() => setActiveTab('services')} className={activeTab === 'services' ? 'text-[#D4AF37]' : ''}>Services</button>
-          <button onClick={() => scrollToSection(contactRef)}>Contact Us</button>
-          <button onClick={() => setIsCartOpen(true)} className="font-black">CART {cart.length > 0 && <span className="bg-[#D4AF37] text-white px-2 py-0.5 rounded-full text-[9px] font-black font-bold">{cart.length}</span>}</button>
-          <a href="https://wa.me/919594066615" target="_blank" className="bg-[#25D366] p-2 rounded-full text-white shadow-lg ml-2"><svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-        </div>
-      </nav>
+<nav className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 md:px-10 py-4 flex justify-between items-center shadow-sm font-sans">
+  
+  {/* 1. LEFT CORNER: LOGO */}
+  <div className="flex-shrink-0">
+    <img 
+      src="/logo.JPEG" 
+      alt="Logo" 
+      className="h-10 md:h-20 w-auto object-contain cursor-pointer" 
+      onClick={() => setActiveTab('home')} 
+    />
+  </div>
 
+  {/* 2. CENTER: ALL NAVIGATION LINKS (INCLUDING CART) */}
+  {/* On mobile, these are hidden to keep the layout clean. On laptop, they are all in one line. */}
+  <div className="hidden lg:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
+    <button onClick={() => setActiveTab('home')} className="hover:text-[#14532d] transition-colors">Home</button>
+    <button onClick={() => scrollToSection(aboutRef)} className="hover:text-[#14532d] transition-colors">About</button>
+    <button onClick={() => setActiveTab('shop')} className="hover:text-[#14532d] transition-colors">Products</button>
+    <button onClick={() => setActiveTab('services')} className="hover:text-[#14532d] transition-colors">Services</button>
+    <button onClick={() => scrollToSection(contactRef)} className="hover:text-[#14532d] transition-colors">Contact Us</button>
+    
+    {/* Cart is now identical to other links */}
+    <button 
+      onClick={() => setIsCartOpen(true)} 
+      className="hover:text-[#14532d] transition-colors flex items-center gap-1"
+    >
+      Cart {cart.length > 0 && `(${cart.length})`}
+    </button>
+  </div>
+
+  {/* 3. RIGHT CORNER: WHATSAPP ICON & MOBILE CART */}
+  <div className="flex items-center gap-4">
+    {/* This Cart only shows on mobile since the center menu is hidden */}
+    <button 
+      onClick={() => setIsCartOpen(true)} 
+      className="lg:hidden font-black text-[10px] uppercase tracking-widest text-slate-500"
+    >
+      Cart ({cart.length})
+    </button>
+
+    <a 
+      href="https://wa.me/919594066615" 
+      target="_blank" 
+      className="bg-[#25D366] p-2 rounded-full shadow-md hover:scale-110 transition-transform"
+    >
+      <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+      </svg>
+    </a>
+  </div>
+
+</nav>
       <main>
         {activeTab === 'home' && (
           <>
-            <section className="max-w-7xl mx-auto px-8 py-20 font-bold text-left grid lg:grid-cols-2 gap-10 items-center animate-in fade-in duration-1000">
-              <div className="space-y-6">
-                <h1 className="text-8xl font-serif font-bold leading-[0.9] text-[#14532d]">Botanical <br /><span className="text-[#D4AF37] italic">Excellence</span></h1>
-                <p className="text-lg font-semibold text-[#14532d] uppercase tracking-[0.2em] leading-relaxed">
-  Premium Herbal Products Exporter & Global Service Provider
-</p>
-                <div className="flex gap-4 mt-8">
-    <button 
-      onClick={() => setActiveTab('shop')} 
-      className="bg-[#14532d] text-white px-10 py-5 rounded-2xl shadow-xl font-bold uppercase text-[12px] tracking-widest hover:bg-[#D4AF37] transition-all"
-    >
-      Our Products
-    </button>
-    <button 
-      onClick={() => scrollToSection(contactRef)} 
-      className="border-2 border-[#14532d] text-[#14532d] px-10 py-5 rounded-2xl shadow-lg font-bold uppercase text-[12px] tracking-widest hover:bg-slate-50 transition-all"
-    >
-      Enquiry Now
-    </button>
-</div>
-              </div>
-              <div className="relative shadow-2xl rounded-[60px] overflow-hidden"><img src="https://images.unsplash.com/photo-1612817288484-6f916006741a" alt="Hero" className="w-full h-full object-cover" /></div>
-            </section>
+            <section className="max-w-7xl mx-auto px-6 md:px-8 py-10 md:py-20 text-left grid grid-cols-1 lg:grid-cols-2 gap-10 items-center animate-in fade-in duration-1000">
+  <div className="space-y-6">
+    <h1 className="text-5xl md:text-8xl font-serif font-bold leading-tight text-[#14532d]">
+      Botanical <br /><span className="text-[#D4AF37] italic">Excellence</span>
+    </h1>
+    <p className="text-sm md:text-lg font-semibold text-[#14532d] uppercase tracking-[0.2em] leading-relaxed">
+      Premium Herbal Products Exporter & Global Service Provider
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 mt-8">
+        <button onClick={() => setActiveTab('shop')} className="w-full sm:w-auto bg-[#14532d] text-white px-10 py-5 rounded-2xl shadow-xl font-bold uppercase text-[12px]">Our Products</button>
+        <button onClick={() => scrollToSection(contactRef)} className="w-full sm:w-auto border-2 border-[#14532d] text-[#14532d] px-10 py-5 rounded-2xl shadow-lg font-bold uppercase text-[12px]">Enquiry Now</button>
+    </div>
+  </div>
+  <div className="relative shadow-2xl rounded-[40px] md:rounded-[60px] overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a" alt="Hero" className="w-full h-full object-cover" />
+  </div>
+</section>
             
             <section className="max-w-7xl mx-auto px-8 py-20 border-t">
                 <h2 className="text-5xl font-serif font-medium text-[#14532d] mb-12 uppercase tracking-widest">Shop by collection</h2>
@@ -278,52 +313,50 @@ export default function VortiaLP() {
                 </div>
             </section>
 
-            <section ref={aboutRef} className="bg-white py-32 px-8 text-center font-sans font-black tracking-widest uppercase">
-  <h2 className="text-6xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-tighter">About Us</h2>
+            <section ref={aboutRef} className="bg-white py-16 md:py-32 px-6 md:px-8 text-center font-sans">
+  <h2 className="text-5xl md:text-6xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-tighter">About Us</h2>
   
-  <p className="text-slate-400 text-sm uppercase tracking-[0.3em] mb-12 max-w-4xl mx-auto font-black leading-relaxed">
+  <p className="text-slate-400 text-xs md:text-sm uppercase tracking-[0.3em] mb-12 max-w-4xl mx-auto font-black leading-relaxed">
     Vortia LP is a premium herbal products exporter specializing in natural and handmade herbal products. 
     We focus on quality, purity, and global standards to deliver trusted herbal solutions to international markets.
   </p>
 
-  {/* MISSION & VISION CARDS (RESTORED) */}
-  <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto mb-20 text-left font-bold lowercase">
-      <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
-        <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Mission</h3>
-        <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To provide high-quality botanical products and exceed every customer expectation daily.</p>
+  {/* ORIGINAL MISSION & VISION CARDS */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-6xl mx-auto mb-20 text-left">
+      <div className="p-8 md:p-12 bg-[#FAF9F6] rounded-[40px] md:rounded-[60px] border border-slate-100 shadow-sm hover:border-[#D4AF37]/30 transition-all">
+        <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Mission</h3>
+        <p className="text-slate-500 leading-relaxed text-md md:text-lg italic font-bold lowercase">To provide high-quality botanical products and exceed every customer expectation daily.</p>
       </div>
-      <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-transparent hover:border-[#D4AF37]/30 transition-all tracking-widest">
-        <h3 className="text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Vision</h3>
-        <p className="text-slate-500 leading-relaxed text-lg italic font-bold">To become the most trusted leading brand globally through sustainable practices.</p>
+      <div className="p-8 md:p-12 bg-[#FAF9F6] rounded-[40px] md:rounded-[60px] border border-slate-100 shadow-sm hover:border-[#D4AF37]/30 transition-all">
+        <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#14532d] mb-6 uppercase tracking-widest">Vision</h3>
+        <p className="text-slate-500 leading-relaxed text-md md:text-lg italic font-bold lowercase">To become the most trusted leading brand globally through sustainable practices.</p>
       </div>
   </div>
 
-  <p className="text-[#14532d] text-sm uppercase tracking-[0.3em] mb-20 max-w-3xl mx-auto font-bold italic">
+  <p className="text-[#14532d] text-[10px] md:text-xs uppercase tracking-[0.3em] mb-20 max-w-3xl mx-auto font-bold italic">
     While nature provides the raw purity, our mission and vision elevate those standards into world-class botanical excellence.
   </p>
 
-  {/* TWO BOXES SECTION FROM IMAGE */}
-  <div className="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto text-left font-bold lowercase">
+  {/* CONTENT BOXES AS REQUESTED */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto text-left font-bold lowercase">
     
-    {/* LEFT BOX: WHY CHOOSE US */}
-    <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-slate-100 flex flex-col justify-between">
-      <div>
-        <h3 className="text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Why Choose Us</h3>
-        <ul className="space-y-4 text-slate-500 text-sm tracking-wider uppercase font-black">
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Herbal and Natural Ingredient-Based Products</li>
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Handcrafted herbal soaps made with carefully selected natural ingredients</li>
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Export-Quality Packaging & Consistency</li>
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Trusted Manufacturing Partners</li>
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Competitive Global Pricing</li>
-          <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Reliable Bulk Supply for International Buyers</li>
-        </ul>
-      </div>
+    {/* WHY CHOOSE US */}
+    <div className="p-8 md:p-12 bg-[#FAF9F6] rounded-[40px] md:rounded-[60px] border border-slate-100 shadow-sm">
+      <h3 className="text-xl md:text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Why Choose Us</h3>
+      <ul className="space-y-4 text-slate-500 text-xs md:text-sm tracking-wider uppercase font-black">
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Herbal and Natural Ingredient-Based Products</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Handcrafted herbal soaps made with carefully selected natural ingredients</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Export-Quality Packaging & Consistency</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Trusted Manufacturing Partners</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Competitive Global Pricing</li>
+        <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Reliable Bulk Supply for International Buyers</li>
+      </ul>
     </div>
 
-    {/* RIGHT BOX: KEY PRODUCT CATEGORIES */}
-    <div className="p-12 bg-[#FAF9F6] rounded-[60px] shadow-sm border border-slate-100">
-      <h3 className="text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Key Product Categories</h3>
-      <ul className="space-y-4 text-slate-500 text-sm tracking-wider uppercase font-black">
+    {/* PRODUCT CATEGORIES */}
+    <div className="p-8 md:p-12 bg-[#FAF9F6] rounded-[40px] md:rounded-[60px] border border-slate-100 shadow-sm">
+      <h3 className="text-xl md:text-2xl font-serif font-bold text-[#14532d] mb-8 uppercase tracking-widest">Key Product Categories</h3>
+      <ul className="space-y-4 text-slate-500 text-xs md:text-sm tracking-wider uppercase font-black">
         <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Handmade Herbal Soaps</li>
         <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Natural Face Wash & Skincare Products</li>
         <li className="flex items-start gap-3"><span className="text-[#D4AF37]">✔</span> Herbal Hair Care Products</li>
@@ -338,9 +371,9 @@ export default function VortiaLP() {
     </div>
   </div>
 
-  <div className="mt-24 text-[#14532d] italic font-serif text-xl tracking-widest opacity-80">
+  <div className="mt-24 text-[#14532d] italic font-serif text-lg md:text-xl tracking-widest opacity-80">
     <p>Nature-inspired products. Global quality standards.</p>
-    <p className="text-sm mt-2 font-black">Trusted herbal export partner.</p>
+    <p className="text-xs md:text-sm mt-2 font-black">Trusted herbal export partner.</p>
   </div>
 </section>
 
@@ -414,16 +447,16 @@ export default function VortiaLP() {
                 <div className="flex flex-wrap justify-center gap-4 mb-20 uppercase font-black text-[10px]">
                     {['All', 'Soaps', 'Face Wash', 'Hair Care'].map((btn) => (<button key={btn} onClick={() => setFilter(btn)} className={`px-8 py-3 rounded-full transition-all ${filter === btn ? 'bg-[#14532d] text-white' : 'bg-white border text-slate-500'}`}>{btn}</button>))}
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 font-black font-bold">
-                    {filteredProducts.map((p) => (
-                      <div key={p.id} onClick={() => setSelectedProduct(p)} className="group bg-white p-7 rounded-[48px] border border-slate-50 hover:shadow-2xl transition-all cursor-pointer text-left font-sans font-bold">
-                        <img src={p.img} alt={p.name} className="w-full h-[300px] object-cover rounded-[36px] mb-10 shadow-sm transition-transform duration-700 group-hover:scale-105" />
-                        <h3 className="text-2xl font-bold text-[#14532d] mb-4 leading-none">{p.name}</h3>
-                        <p className="font-serif font-bold text-[#D4AF37] text-2xl mb-8">₹{p.price}</p>
-                        <button onClick={(e) => { e.stopPropagation(); addToCart(p); }} className="w-full py-5 rounded-2xl bg-[#14532d] text-white font-black uppercase text-[11px] hover:bg-[#D4AF37] transition-all">Add to Cart</button>
-                      </div>
-                    ))}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 font-black font-bold">
+  {filteredProducts.map((p) => (
+    <div key={p.id} onClick={() => setSelectedProduct(p)} className="group bg-white p-5 md:p-7 rounded-[32px] md:rounded-[48px] border border-slate-50 hover:shadow-2xl transition-all cursor-pointer">
+      <img src={p.img} alt={p.name} className="w-full h-[200px] md:h-[300px] object-cover rounded-[24px] md:rounded-[36px] mb-6" />
+      <h3 className="text-xl md:text-2xl font-bold text-[#14532d] mb-4">{p.name}</h3>
+      <p className="font-serif font-bold text-[#D4AF37] text-xl md:text-2xl mb-8">₹{p.price}</p>
+      <button onClick={(e) => { e.stopPropagation(); addToCart(p); }} className="w-full py-4 md:py-5 rounded-2xl bg-[#14532d] text-white font-black uppercase text-[10px]">Add to Cart</button>
+    </div>
+  ))}
+</div>
             </section>
         )}
       </main>
@@ -483,61 +516,78 @@ export default function VortiaLP() {
         </div>
       )}
 
-      {/* CART DRAWER */}
-      {isCartOpen && (
-        <div className="fixed inset-0 z-[300] flex justify-end font-black">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
-          <div className="relative w-full max-w-md bg-white h-full shadow-2xl p-12 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-500 text-left">
-            <div className="flex justify-between items-center mb-12 font-serif font-bold text-4xl text-[#14532d]">
-              <h2>Cart</h2>
-              <button onClick={() => setIsCartOpen(false)} className="text-4xl font-light hover:text-red-500">×</button>
-            </div>
-            <div className="space-y-10 mb-10">
-              {cart.length === 0 ? (
-                <div className="text-center py-10">
-                  <p className="text-slate-400 uppercase text-[10px] tracking-widest mb-4">Your cart is empty</p>
-                  <button onClick={() => {setIsCartOpen(false); setActiveTab('shop');}} className="text-[#D4AF37] text-[10px] uppercase underline font-black">Start Shopping</button>
+     {/* CART DRAWER */}
+{isCartOpen && (
+  <div className="fixed inset-0 z-[300] flex justify-end font-black">
+    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsCartOpen(false)} />
+    
+    {/* CHANGE: Changed w-full max-w-md to w-[90%] md:w-full md:max-w-md */}
+    <div className="relative w-[90%] md:w-full md:max-w-md bg-white h-full shadow-2xl p-6 md:p-12 flex flex-col overflow-y-auto animate-in slide-in-from-right duration-500 text-left">
+      
+      {/* HEADER: Adjusted text size for mobile */}
+      <div className="flex justify-between items-center mb-8 md:mb-12 font-serif font-bold text-3xl md:text-4xl text-[#14532d]">
+        <h2>Cart</h2>
+        <button onClick={() => setIsCartOpen(false)} className="text-4xl font-light hover:text-red-500">×</button>
+      </div>
+
+      {/* 1. PRODUCT LIST */}
+      <div className="space-y-6 md:space-y-10 mb-10">
+        {cart.length === 0 ? (
+          <div className="text-center py-10">
+            <p className="text-slate-400 uppercase text-[10px] tracking-widest mb-4">Your cart is empty</p>
+            <button onClick={() => {setIsCartOpen(false); setActiveTab('shop');}} className="text-[#D4AF37] text-[10px] uppercase underline font-black">Start Shopping</button>
+          </div>
+        ) : (
+          cart.map((item) => (
+            <div key={item.id} className="flex gap-4 md:gap-6 border-b border-slate-100 pb-6 md:pb-8 items-center">
+              <img src={item.img} className="w-20 h-20 md:w-24 md:h-24 rounded-2xl md:rounded-3xl object-cover shadow-sm" />
+              <div className="flex-1 space-y-1 md:space-y-2">
+                <p className="font-bold text-md md:text-lg text-[#14532d]">{item.name}</p>
+                <p className="text-[#D4AF37] font-bold text-sm">₹{item.price} x {item.qty}</p>
+                
+                {/* QUANTITY CONTROLS: Easier to tap on mobile */}
+                <div className="flex items-center gap-3 md:gap-4 pt-2">
+                  <button onClick={() => updateQty(item.id, -1)} className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center">-</button>
+                  <span className="text-sm">{item.qty}</span>
+                  <button onClick={() => updateQty(item.id, 1)} className="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center">+</button>
+                  <button onClick={() => removeItem(item.id)} className="ml-auto text-red-500 text-[10px] uppercase underline">Remove</button>
                 </div>
-              ) : (
-                cart.map((item) => (
-                  <div key={item.id} className="flex gap-6 border-b border-slate-100 pb-8 items-center">
-                    <img src={item.img} className="w-24 h-24 rounded-3xl object-cover shadow-sm" />
-                    <div className="flex-1 space-y-2">
-                      <p className="font-bold text-lg text-[#14532d]">{item.name}</p>
-                      <p className="text-[#D4AF37] font-bold text-sm">₹{item.price} x {item.qty}</p>
-                      <div className="flex items-center gap-4 pt-2">
-                        <button onClick={() => updateQty(item.id, -1)} className="w-8 h-8 rounded-full border border-slate-200">-</button>
-                        <span>{item.qty}</span>
-                        <button onClick={() => updateQty(item.id, 1)} className="w-8 h-8 rounded-full border border-slate-200">+</button>
-                        <button onClick={() => removeItem(item.id)} className="ml-auto text-red-500 text-[10px] uppercase underline">Remove</button>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            <div className="mt-4 pt-8 border-t border-slate-100 space-y-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#14532d] mb-2 font-bold">Shipping Details</p>
-              <input type="text" placeholder="Your Full Name" className="w-full p-5 bg-slate-50 rounded-2xl border border-slate-100 outline-none text-sm font-bold focus:border-[#D4AF37]" onChange={(e) => (window as any).custName = e.target.value} />
-              <input type="text" placeholder="Phone Number" className="w-full p-5 bg-slate-50 rounded-2xl border border-slate-100 outline-none text-sm font-bold focus:border-[#D4AF37]" onChange={(e) => (window as any).custPhone = e.target.value} />
-              <textarea placeholder="Complete Delivery Address" className="w-full p-5 bg-slate-50 rounded-2xl border border-slate-100 outline-none text-sm font-bold h-28 focus:border-[#D4AF37]" onChange={(e) => (window as any).custAddress = e.target.value} />
-            </div>
-
-            <div className="mt-8 pt-8 border-t border-slate-100 space-y-6 pb-10">
-              <div className="flex justify-between items-center">
-                <span className="text-slate-400 uppercase text-[10px] font-bold">Grand Total</span>
-                <span className="text-5xl font-serif text-[#14532d]">₹{totalPrice}</span>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <button onClick={() => alert(`Processing GPay...`)} className="py-6 rounded-[24px] bg-[#fbbf24] font-black uppercase text-[10px] tracking-wider shadow-xl hover:bg-[#D4AF37] transition-all">Pay via GPay</button>
-                <button onClick={() => {
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* 2. SHIPPING DETAILS: Full width inputs for better mobile typing */}
+      <div className="mt-4 pt-6 md:pt-8 border-t border-slate-100 space-y-4">
+        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#14532d] mb-2 font-bold">Shipping Details</p>
+        <input type="text" placeholder="Full Name" className="w-full p-4 md:p-5 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 outline-none text-sm font-bold" />
+        <input type="text" placeholder="Phone Number" className="w-full p-4 md:p-5 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 outline-none text-sm font-bold" />
+        <textarea placeholder="Delivery Address" className="w-full p-4 md:p-5 bg-slate-50 rounded-xl md:rounded-2xl border border-slate-100 outline-none text-sm font-bold h-24 md:h-28" />
+      </div>
+
+      {/* 3. CHECKOUT SECTION */}
+      <div className="mt-8 pt-8 border-t border-slate-100 space-y-6 pb-10">
+        <div className="flex justify-between items-center">
+          <span className="text-slate-400 uppercase text-[10px] font-bold">Total</span>
+          <span className="text-3xl md:text-5xl font-serif text-[#14532d]">₹{totalPrice}</span>
+        </div>
+        
+        {/* Buttons: Stacked on mobile for bigger tap targets */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <button className="py-5 md:py-6 rounded-2xl bg-[#fbbf24] font-black uppercase text-[10px] tracking-wider shadow-xl">Pay via GPay</button>
+          <button 
+                  onClick={() => {
                     const name = (window as any).custName || 'Not Provided';
                     const phone = (window as any).custPhone || 'Not Provided';
                     const addr = (window as any).custAddress || 'Not Provided';
                     const message = `*New Order from Vortia LP*\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${addr}\n\n*Items:* \n${cart.map(item => `- ${item.name} (Qty: ${item.qty})`).join('\n')}\n\n*Total:* ₹${totalPrice}`;
                     window.open(`https://wa.me/919594066615?text=${encodeURIComponent(message)}`, '_blank');
-                  }} className="py-6 rounded-[24px] bg-[#25D366] text-white font-black uppercase text-[10px] tracking-wider shadow-xl hover:bg-[#128C7E] transition-all">WhatsApp Order</button>
+                  }} 
+                  className="py-6 rounded-[24px] bg-[#25D366] text-white font-black uppercase text-[10px] tracking-wider shadow-xl hover:bg-[#128C7E] transition-all"
+                >
+                  WhatsApp Order
+                </button>
               </div>
             </div>
           </div>
