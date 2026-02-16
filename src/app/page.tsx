@@ -762,81 +762,81 @@ React.useEffect(() => {
         {/* THE MODAL (Inside the Admin Return) */}
 
 {showAddModal && (
-
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/70 backdrop-blur-md">
-
     <div className="bg-white w-full max-w-2xl rounded-[50px] p-12 shadow-2xl animate-in zoom-in-95 font-black">
-
-      <h3 className="text-3xl font-serif font-bold text-[#14532d] mb-10 uppercase">{editingProduct ? 'Edit Product' : 'Add New Product'}</h3>
+      <h3 className="text-3xl font-serif font-bold text-[#14532d] mb-10 uppercase">
+        {editingProduct ? 'Edit Product' : 'Add New Product'}
+      </h3>
 
       <div className="grid grid-cols-2 gap-6 mb-10">
-
-        <div className="space-y-2"><label className="text-[10px] uppercase text-slate-400">Name</label><input value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" /></div>
-
-        <div className="space-y-2"><label className="text-[10px] uppercase text-slate-400">Price</label><input value={formState.price} onChange={(e) => setFormState({...formState, price: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" /></div>
-
-        <div className="space-y-2"><label className="text-[10px] uppercase text-slate-400">Category</label><select value={formState.cat} onChange={(e) => setFormState({...formState, cat: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none"><option value="Soaps">Soaps</option><option value="Face Wash">Face Wash</option><option value="Hair Care">Hair Care</option></select></div>
-
-        <div className="space-y-2"><label className="text-[10px] uppercase text-slate-400">Stock</label><input type="number" value={formState.stock} onChange={(e) => setFormState({...formState, stock: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" /></div>
-
-        <div className="col-span-2 space-y-2"><label className="text-[10px] uppercase text-slate-400">Description</label><textarea value={formState.desc} onChange={(e) => setFormState({...formState, desc: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl h-24 outline-none" /></div>
-
-        
-
-        {/* RESTORED: Image Upload Block */}
-
-        <div className="col-span-2 space-y-2">
-
-          <label className="text-[10px] font-black uppercase text-slate-400">Product Image</label>
-
-          <div className="flex items-center gap-6">
-
-            <div className="w-24 h-24 rounded-2xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center overflow-hidden">
-
-              {formState.img ? <img src={formState.img} className="w-full h-full object-cover" /> : <span className="text-2xl">🖼️</span>}
-
-            </div>
-
-            <label className="flex-1 border-2 border-dashed border-[#14532d]/20 rounded-3xl p-8 text-center bg-slate-50/50 cursor-pointer font-black uppercase text-[10px] tracking-widest hover:border-[#14532d] transition-all">
-
-              <span className="text-xl block mb-2">📤</span> {formState.img ? "Change Image" : "Upload Image from Device"}
-
-              <input type="file" accept="image/*" className="hidden" onChange={(e) => {
-
-                  const file = e.target.files?.[0];
-
-                  if (file) {
-
-                    const reader = new FileReader();
-
-                    reader.onloadend = () => setFormState({ ...formState, img: reader.result as string });
-
-                    reader.readAsDataURL(file);
-
-                  }
-
-              }} />
-
-            </label>
-
-          </div>
-
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Name</label>
+          <input value={formState.name} onChange={(e) => setFormState({...formState, name: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" />
         </div>
 
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Price</label>
+          <input value={formState.price} onChange={(e) => setFormState({...formState, price: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Category</label>
+          <select value={formState.cat} onChange={(e) => setFormState({...formState, cat: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none">
+            <option value="Soaps">Soaps</option>
+            <option value="Face Wash">Face Wash</option>
+            <option value="Hair Care">Hair Care</option>
+          </select>
+        </div>
+
+        {/* ADDED: Badge Field (Fixes the TypeScript Build Error) */}
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Badge (e.g. New, Sale, Hot)</label>
+          <input 
+            value={formState.badge} 
+            onChange={(e) => setFormState({...formState, badge: e.target.value})} 
+            className="w-full p-4 bg-slate-50 rounded-2xl border outline-none"
+            placeholder="Optional"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Stock</label>
+          <input type="number" value={formState.stock} onChange={(e) => setFormState({...formState, stock: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl border outline-none" />
+        </div>
+
+        <div className="col-span-2 space-y-2">
+          <label className="text-[10px] uppercase text-slate-400">Description</label>
+          <textarea value={formState.desc} onChange={(e) => setFormState({...formState, desc: e.target.value})} className="w-full p-4 bg-slate-50 rounded-2xl h-24 outline-none" />
+        </div>
+
+        {/* Image Upload Block remains the same */}
+        <div className="col-span-2 space-y-2">
+          <label className="text-[10px] font-black uppercase text-slate-400">Product Image</label>
+          <div className="flex items-center gap-6">
+            <div className="w-24 h-24 rounded-2xl bg-slate-100 border-2 border-dashed border-slate-200 flex items-center justify-center overflow-hidden">
+              {formState.img ? <img src={formState.img} className="w-full h-full object-cover" /> : <span className="text-2xl">🖼️</span>}
+            </div>
+            <label className="flex-1 border-2 border-dashed border-[#14532d]/20 rounded-3xl p-8 text-center bg-slate-50/50 cursor-pointer font-black uppercase text-[10px] tracking-widest hover:border-[#14532d] transition-all">
+              <span className="text-xl block mb-2">📤</span> {formState.img ? "Change Image" : "Upload Image from Device"}
+              <input type="file" accept="image/*" className="hidden" onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => setFormState({ ...formState, img: reader.result as string });
+                    reader.readAsDataURL(file);
+                  }
+              }} />
+            </label>
+          </div>
+        </div>
       </div>
 
       <div className="flex justify-end gap-4">
-
         <button onClick={() => setShowAddModal(false)} className="px-8 py-3 text-slate-400 font-black uppercase text-[10px]">Cancel</button>
-
         <button onClick={handleSaveProduct} className="px-10 py-3 bg-[#14532d] text-white rounded-full font-black uppercase text-[10px] shadow-xl hover:bg-[#D4AF37]">Save Changes</button>
-
       </div>
-
     </div>
-
   </div>
-
 )}
 {previewImage && (
   <div 
