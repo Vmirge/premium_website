@@ -394,9 +394,10 @@ React.useEffect(() => {
       price: p.price.toString(), 
       cat: p.cat,
       stock: (p.stock ?? 10).toString(),
-      badge: p.badge || "", // This converts 'undefined' to an empty string ""
+      badge: p.badge || "", // Fixes the 'undefined' error
       desc: p.desc,
       img: p.img
+      // Notice we do NOT include 'id' or 'qty' here
     }); 
     setShowAddModal(true); 
   }} 
