@@ -386,10 +386,24 @@ React.useEffect(() => {
 
                         <td className="p-6 text-center">
 
-                          <button onClick={() => { setEditingProduct(p); setFormState({ ...p, price: p.price.toString(), stock: (p.stock ?? 10).toString() }); setShowAddModal(true); }} className="mr-4 underline text-[#14532d]">Edit</button>
-
-                          <button onClick={() => setHerbalProducts(herbalProducts.filter(x => x.id !== p.id))} className="text-red-500 underline">Delete</button>
-
+                          <button 
+  onClick={() => { 
+    setEditingProduct(p); 
+    setFormState({ 
+      name: p.name,
+      price: p.price.toString(), 
+      cat: p.cat,
+      stock: (p.stock ?? 10).toString(),
+      badge: p.badge || "", // This converts 'undefined' to an empty string ""
+      desc: p.desc,
+      img: p.img
+    }); 
+    setShowAddModal(true); 
+  }} 
+  className="mr-4 underline text-[#14532d]"
+>
+  Edit
+</button>
                         </td>
 
                       </tr>
@@ -1700,8 +1714,12 @@ if (dbError) {
 
     // 3. Generate WhatsApp Message
     const itemDetails = cart
-      .map((item) => `• ${item.name} (x${item.qty}) - ₹${item.price * item.qty}`)
-      .join('\n');
+  .map((item) => {
+    // We use (item.qty || 1) to ensure there is always a number
+    const quantity = item.qty || 1; 
+    return `• ${item.name} (x${quantity}) - ₹${item.price * quantity}`;
+  })
+  .join('\n');
 
     const whatsappMessage = 
 `*NEW ORDER: VORTIA LP* 🌿
