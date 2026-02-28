@@ -732,11 +732,22 @@ React.useEffect(() => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 font-black">
             {filteredProducts.map((p) => (
-              <div key={p.id} onClick={() => setSelectedProduct(p)} className="group bg-white p-5 md:p-7 rounded-[32px] md:rounded-[48px] border border-slate-50 hover:shadow-2xl transition-all cursor-pointer">
-                <img src={p.img} alt={p.name} className="w-full h-[200px] md:h-[300px] object-cover rounded-[24px] md:rounded-[36px] mb-6" />
-                <h3 className="text-xl md:text-2xl font-bold text-[#14532d] mb-4">{p.name}</h3>
-              </div>
-            ))}
+  <div 
+    key={p.id} 
+    onClick={() => setSelectedProduct(p)} 
+    className="group bg-white p-5 md:p-7 rounded-[32px] md:rounded-[48px] border border-slate-50 hover:shadow-2xl transition-all cursor-pointer flex flex-col items-center"
+  >
+    <div className="w-full h-[200px] md:h-[300px] overflow-hidden rounded-[24px] md:rounded-[36px] mb-6 bg-slate-100">
+      <img 
+        src={p.img} 
+        alt={p.name} 
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+        onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300?text=Image+Not+Found'; }}
+      />
+    </div>
+    <h3 className="text-xl md:text-2xl font-bold text-[#14532d] mb-4">{p.name}</h3>
+  </div>
+))}
           </div>
         </section>
       )}
