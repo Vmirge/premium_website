@@ -751,8 +751,8 @@ React.useEffect(() => {
       {/* --- SHOP TAB CONTENT --- */}
       {activeTab === 'shop' && (
         <section className="py-20 px-8 max-w-7xl mx-auto text-center font-bold">
-          <span className="text-[#D4AF37] font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Vortia Standards</span>
-          <h2 className="text-6xl font-serif font-bold text-[#14532d] mb-12 uppercase tracking-tighter">Herbal Standard Products</h2>
+          <span className="text-[#D4AF37] font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Vortia LP </span>
+          <h2 className="text-6xl font-serif font-bold text-[#14532d] mb-12 uppercase tracking-tighter">Premium Herbal products</h2>
           <div className="max-w-xl mx-auto mb-10"><input type="text" placeholder="Search products..." className="w-full p-6 bg-white border border-slate-200 rounded-[24px] text-sm outline-none shadow-sm focus:border-[#D4AF37] text-center font-bold" onChange={(e) => setSearchQuery(e.target.value)} /></div>
           <div className="flex flex-wrap justify-center gap-4 mb-20 uppercase font-black text-[10px]">
             {['All', 'Soaps', 'Face Wash', 'Hair Care'].map((btn) => (<button key={btn} onClick={() => setFilter(btn)} className={`px-8 py-3 rounded-full transition-all ${filter === btn ? 'bg-[#14532d] text-white' : 'bg-white border text-slate-500'}`}>{btn}</button>))}
