@@ -791,11 +791,16 @@ React.useEffect(() => {
                 <p className="text-[#D4AF37] text-lg font-black uppercase tracking-widest mb-10">Accurate • Secure • On Time</p>
                 <button onClick={() => scrollToSection(contactRef)} className="bg-[#D4AF37] text-white px-10 py-4 rounded-full font-black uppercase text-[10px] tracking-widest hover:bg-white hover:text-[#14532d] transition-all">Connect Now</button>
               </div>
-              <div className="flex-1 h-full w-full p-10 flex justify-center items-center">
-                <div className="relative h-[400px] w-full rounded-[60px] overflow-hidden shadow-2xl border-4 border-white/10">
-                  <img src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6" alt="Data Services" className="w-full h-full object-cover" />
-                </div>
-              </div>
+              <div className="flex-1 w-full p-6 md:p-10 flex justify-center items-center">
+  {/* Restored to h-[400px] for consistent premium close-up framing */}
+  <div className="relative h-[400px] w-full rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 border-white/10">
+    <img 
+      src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6" 
+      alt="Data Services" 
+      className="w-full h-full object-cover object-center" 
+    />
+  </div>
+</div>
             </div>
           </div>
 
