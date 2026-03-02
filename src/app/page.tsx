@@ -958,88 +958,93 @@ React.useEffect(() => {
 
       {/* --- PRODUCT MODAL --- */}
       {/* --- DETAILED PRODUCT MODAL --- */}
-      {selectedProduct && (
-        <div className="fixed inset-0 z-[500] bg-white overflow-y-auto animate-in fade-in">
-          {/* Sticky Header */}
-          <nav className="sticky top-0 bg-white border-b p-6 flex justify-between items-center shadow-sm z-50">
-            <button onClick={() => setSelectedProduct(null)} className="text-[#14532d] font-black uppercase text-xs flex items-center gap-2">
-              ← Back to Catalogue
-            </button>
-            <h2 className={`${googeeStyle.className} text-[#D4AF37] text-2xl uppercase`}>Vortia LP</h2>
-          </nav>
+     {/* --- UPDATED PRODUCT MODAL --- */}
+{selectedProduct && (
+  <div className="fixed inset-0 z-[500] bg-white overflow-y-auto animate-in fade-in">
+    {/* Sticky Header */}
+    <nav className="sticky top-0 bg-white border-b p-6 flex justify-between items-center shadow-sm z-50">
+      <button onClick={() => setSelectedProduct(null)} className="text-[#14532d] font-black uppercase text-xs flex items-center gap-2">
+        ← Back to Catalogue
+      </button>
+      <h2 className={`${googeeStyle.className} text-[#D4AF37] text-2xl uppercase`}>Vortia LP</h2>
+    </nav>
 
-          <div className="max-w-6xl mx-auto p-6 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* LEFT SIDE: Product Image */}
-            <div className="lg:sticky lg:top-24">
-              <img 
-                src={selectedProduct.img} 
-                alt={selectedProduct.name} 
-                className="w-full rounded-[40px] shadow-2xl border-4 border-[#FAF9F6] object-cover aspect-square" 
-              />
-            </div>
+    <div className="max-w-6xl mx-auto p-6 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      {/* LEFT SIDE: Product Image */}
+      <div className="lg:sticky lg:top-24">
+        <img 
+          src={selectedProduct.img} 
+          alt={selectedProduct.name} 
+          className="w-full rounded-[40px] shadow-2xl border-4 border-[#FAF9F6] object-cover aspect-square" 
+        />
+      </div>
 
-            {/* RIGHT SIDE: Full Attribute Table */}
-            <div className="space-y-8">
-              <h1 className="text-4xl font-serif font-bold text-[#14532d] uppercase text-left">{selectedProduct.name}</h1>
-              
-              <div className="border-2 border-[#14532d]/10 rounded-3xl overflow-hidden font-sans shadow-sm">
-                <table className="w-full text-left border-collapse">
-                  <thead className="bg-[#14532d] text-white text-[10px] uppercase tracking-widest">
-                    <tr>
-                      <th className="p-4 border-r border-white/10 w-1/3">Specification</th>
-                      <th className="p-4">Details</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-sm">
-                    {[
-                      { label: "Product Name", value: selectedProduct.name },
-                      { label: "Ingredients", value: selectedProduct.ingredients },
-                      { label: "Origin", value: selectedProduct.origin },
-                      { label: "Size/Weight", value: selectedProduct.size },
-                      { label: "Medicated", value: selectedProduct.medicated },
-                      { label: "Fragrance", value: selectedProduct.fragrance },
-                      { label: "Shelf Life", value: selectedProduct.shelfLife },
-                      { label: "Brand", value: selectedProduct.brand },
-                      { label: "Age Group", value: selectedProduct.ageGroup },
-                      { label: "Colour", value: selectedProduct.colour },
-                      { label: "MOQ", value: selectedProduct.moq },
-                      { label: "Price", value: selectedProduct.price }
-                    ].map((row, i) => (
-                      <tr key={i} className={i % 2 === 0 ? "bg-[#FAF9F6]" : "bg-white border-b border-[#14532d]/5"}>
-                        <td className="p-4 font-black text-[#14532d] uppercase text-[10px] border-r border-[#14532d]/5 w-1/3">
-                          {row.label}
-                        </td>
-                        <td className="p-4 text-slate-700 font-bold">
-                          {row.value || "Contact for Details"}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              {/* Features & Services */}
-              <div className="bg-[#FAF9F6] p-8 rounded-[40px] border border-slate-100 space-y-4 text-left">
-                 <p className="text-[10px] font-black uppercase text-[#D4AF37] tracking-[0.2em]">Features & Services</p>
-                 <p className="text-[#14532d] font-bold text-sm leading-relaxed">{selectedProduct.features}</p>
-                 <p className="text-slate-400 text-xs italic font-medium">{selectedProduct.services}</p>
-              </div>
-
-              {/* Fixed Enquiry Action */}
-              <button 
-                onClick={() => { 
-                  setSelectedProduct(null); 
-                  setActiveTab('home'); 
-                  setTimeout(() => contactRef.current?.scrollIntoView({ behavior: 'smooth' }), 150); 
-                }} 
-                className="w-full py-5 rounded-full bg-[#14532d] text-white font-black uppercase text-xs shadow-xl hover:bg-[#D4AF37] transition-all"
-              >
-                Enquire About Bulk Order
-              </button>
-            </div>
-          </div>
+      {/* RIGHT SIDE: Table & Description */}
+      <div className="space-y-8 text-left">
+        <h1 className="text-4xl font-serif font-bold text-[#14532d] uppercase">{selectedProduct.name}</h1>
+        
+        {/* Attribute Table including Features & Services */}
+        <div className="border-2 border-[#14532d]/10 rounded-3xl overflow-hidden font-sans shadow-sm">
+          <table className="w-full text-left border-collapse">
+            <thead className="bg-[#14532d] text-white text-[10px] uppercase tracking-widest">
+              <tr>
+                <th className="p-4 border-r border-white/10 w-1/3">Specification</th>
+                <th className="p-4">Details</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm">
+              {[
+                { label: "Product Name", value: selectedProduct.name },
+                { label: "Ingredients", value: selectedProduct.ingredients },
+                { label: "Origin", value: selectedProduct.origin },
+                { label: "Size/Weight", value: selectedProduct.size },
+                { label: "Medicated", value: selectedProduct.medicated },
+                { label: "Fragrance", value: selectedProduct.fragrance },
+                { label: "Shelf Life", value: selectedProduct.shelfLife },
+                { label: "Brand", value: selectedProduct.brand },
+                { label: "Age Group", value: selectedProduct.ageGroup },
+                { label: "Colour", value: selectedProduct.colour },
+                { label: "MOQ", value: selectedProduct.moq },
+                { label: "Features", value: selectedProduct.features },
+                { label: "Services", value: selectedProduct.services },
+                { label: "Price", value: selectedProduct.price }
+              ].map((row, i) => (
+                <tr key={i} className={i % 2 === 0 ? "bg-[#FAF9F6]" : "bg-white border-b border-[#14532d]/5"}>
+                  <td className="p-4 font-black text-[#14532d] uppercase text-[10px] border-r border-[#14532d]/5 w-1/3">
+                    {row.label}
+                  </td>
+                  <td className="p-4 text-slate-700 font-bold">
+                    {row.value || "Contact for Details"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
+
+        {/* Description Section - Now Below the Table */}
+        <div className="bg-[#FAF9F6] p-8 rounded-[40px] border border-slate-100 space-y-3">
+           <p className="text-[10px] font-black uppercase text-[#D4AF37] tracking-[0.2em]">Product Description</p>
+           <p className="text-[#14532d] font-bold text-sm leading-relaxed italic">
+             {selectedProduct.desc || "High-quality herbal product crafted for international standards."}
+           </p>
+        </div>
+
+        {/* Action Button */}
+        <button 
+          onClick={() => { 
+            setSelectedProduct(null); 
+            setActiveTab('home'); 
+            setTimeout(() => contactRef.current?.scrollIntoView({ behavior: 'smooth' }), 150); 
+          }} 
+          className="w-full py-5 rounded-full bg-[#14532d] text-white font-black uppercase text-xs shadow-xl hover:bg-[#D4AF37] transition-all"
+        >
+          Enquire About Bulk Order
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* --- LOGIN MODAL --- */}
       {isLoginOpen && (
